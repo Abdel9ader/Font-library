@@ -1,7 +1,7 @@
         // Set current year dynamically
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-       const arabicFonts = [
+        const arabicFonts = [
             {
                 name: "طاجاوال (Tajawal)",
                 category: "modern",
@@ -563,8 +563,6 @@
                 popularity: 5
             }
         ];
-
-
 
         // Websites data
         const arabicWebsites = [
