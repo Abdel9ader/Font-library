@@ -1,6 +1,4 @@
-        // Set current year dynamically
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
+       // Fonts data
         const arabicFonts = [
             {
                 name: "طاجاوال (Tajawal)",
@@ -584,6 +582,7 @@
         let currentLanguage = 'ar';
         let previewHistory = [];
         let autoUpdateEnabled = true;
+        let filteredFonts = [];
 
         // Function to simulate loading with enhanced progress bar
         function simulateLoading() {
@@ -612,165 +611,30 @@
             }, 200);
         }
 
-        // Function to save data to localStorage
-        function saveToLocalStorage() {
-            const appData = {
-                currentLanguage: currentLanguage,
-                currentFilter: currentFilter,
-                currentSearch: currentSearch,
-                currentPage: currentPage,
-                previewHistory: previewHistory,
-                autoUpdateEnabled: autoUpdateEnabled,
-                lastVisit: new Date().toISOString()
-            };
+        // Function to get filtered fonts
+        function getFilteredFonts() {
+            let fonts = arabicFonts;
             
-            localStorage.setItem('arabicFontsApp', JSON.stringify(appData));
-        }
-
-        // Function to load data from localStorage
-        function loadFromLocalStorage() {
-            const savedData = localStorage.getItem('arabicFontsApp');
-            if (savedData) {
-                const appData = JSON.parse(savedData);
-                currentLanguage = appData.currentLanguage || 'ar';
-                currentFilter = appData.currentFilter || 'all';
-                currentSearch = appData.currentSearch || '';
-                currentPage = appData.currentPage || 1;
-                previewHistory = appData.previewHistory || [];
-                autoUpdateEnabled = appData.autoUpdateEnabled !== false;
-                
-                // Apply saved language
-                switchLanguage(currentLanguage);
-                
-                // Apply saved search
-                document.querySelector('.search-box').value = currentSearch;
-                
-                // Apply saved history
-                renderPreviewHistory();
-                
-                // Apply saved filter
-                document.querySelectorAll('.filter-btn').forEach(btn => {
-                    btn.classList.toggle('active', btn.getAttribute('data-filter') === currentFilter);
-                });
-            }
-        }
-
-        // Function to render preview history
-        function renderPreviewHistory() {
-            const historyContainer = document.getElementById('previewHistory');
-            historyContainer.innerHTML = '';
-            
-            if (previewHistory.length === 0) return;
-            
-            // Add clear all button
-            const clearAllBtn = document.createElement('div');
-            clearAllBtn.className = 'history-item';
-            clearAllBtn.innerHTML = `
-                <button class="history-clear" title="${currentLanguage === 'ar' ? 'مسح الكل' : 'Clear All'}">
-                    <i class="fas fa-trash"></i>
-                </button>
-                ${currentLanguage === 'ar' ? 'مسح الكل' : 'Clear All'}
-            `;
-            clearAllBtn.addEventListener('click', clearPreviewHistory);
-            historyContainer.appendChild(clearAllBtn);
-            
-            // Add history items (show last 5)
-            const recentHistory = previewHistory.slice(-5).reverse();
-            recentHistory.forEach((text, index) => {
-                const historyItem = document.createElement('div');
-                historyItem.className = 'history-item';
-                historyItem.innerHTML = `
-                    <span>${text}</span>
-                    <button class="history-clear" title="${currentLanguage === 'ar' ? 'إزالة' : 'Remove'}">
-                        <i class="fas fa-times"></i>
-                    </button>
-                `;
-                
-                historyItem.addEventListener('click', (e) => {
-                    if (!e.target.closest('.history-clear')) {
-                        document.getElementById('previewInput').value = text;
-                        updateFontPreviews(text);
-                    }
-                });
-                
-                const clearBtn = historyItem.querySelector('.history-clear');
-                clearBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    removeFromPreviewHistory(text);
-                });
-                
-                historyContainer.appendChild(historyItem);
-            });
-        }
-
-        // Function to add text to preview history
-        function addToPreviewHistory(text) {
-            if (!text || text.trim() === '') return;
-            
-            // Remove if already exists
-            previewHistory = previewHistory.filter(item => item !== text);
-            
-            // Add to the end
-            previewHistory.push(text);
-            
-            // Keep only last 10 items
-            if (previewHistory.length > 10) {
-                previewHistory = previewHistory.slice(-10);
+            // Apply category filter
+            if (currentFilter !== 'all') {
+                fonts = fonts.filter(font => font.category === currentFilter);
             }
             
-            renderPreviewHistory();
-            saveToLocalStorage();
-        }
-
-        // Function to remove text from preview history
-        function removeFromPreviewHistory(text) {
-            previewHistory = previewHistory.filter(item => item !== text);
-            renderPreviewHistory();
-            saveToLocalStorage();
-        }
-
-        // Function to clear preview history
-        function clearPreviewHistory() {
-            previewHistory = [];
-            renderPreviewHistory();
-            saveToLocalStorage();
-        }
-
-        // Function to update font previews with custom text
-        function updateFontPreviews(text = null) {
-            const previewText = text || document.getElementById('previewInput').value;
-            
-            if (previewText.trim() === '') {
-                // Reset to default examples if empty
-                document.querySelectorAll('.font-example').forEach((example, index) => {
-                    if (arabicFonts[index]) {
-                        example.textContent = arabicFonts[index].example;
-                    }
-                });
-                return;
+            // Apply search filter
+            if (currentSearch) {
+                const searchTerm = currentSearch.toLowerCase();
+                fonts = fonts.filter(font => 
+                    font.name.toLowerCase().includes(searchTerm) || 
+                    font.description.toLowerCase().includes(searchTerm) ||
+                    font.example.toLowerCase().includes(searchTerm)
+                );
             }
             
-            // Update all font examples
-            document.querySelectorAll('.font-example').forEach(example => {
-                example.textContent = previewText;
-            });
-            
-            // Add to history if it's a new text
-            if (text === null) {
-                addToPreviewHistory(previewText);
-            }
-            
-            saveToLocalStorage();
-        }
-
-        // Function to clear preview text
-        function clearPreviewText() {
-            document.getElementById('previewInput').value = '';
-            updateFontPreviews('');
+            return fonts;
         }
 
         // Function to render fonts
-        function renderFonts(fonts, page = 1) {
+        function renderFonts() {
             const container = document.getElementById('fontContainer');
             const loadingIndicator = document.getElementById('loadingIndicator');
             
@@ -778,13 +642,16 @@
             container.classList.add('hidden');
             loadingIndicator.classList.remove('hidden');
             
+            // Get filtered fonts
+            filteredFonts = getFilteredFonts();
+            
             // Sort by popularity
-            fonts.sort((a, b) => b.popularity - a.popularity);
+            filteredFonts.sort((a, b) => b.popularity - a.popularity);
             
             // Calculate pagination
-            const startIndex = (page - 1) * FONTS_PER_PAGE;
+            const startIndex = (currentPage - 1) * FONTS_PER_PAGE;
             const endIndex = startIndex + FONTS_PER_PAGE;
-            const paginatedFonts = fonts.slice(startIndex, endIndex);
+            const paginatedFonts = filteredFonts.slice(startIndex, endIndex);
             
             // Simulate loading delay for better UX
             setTimeout(() => {
@@ -829,10 +696,10 @@
                 container.classList.remove('hidden');
                 
                 // Update displayed fonts count
-                document.getElementById('displayedFonts').textContent = fonts.length;
+                document.getElementById('displayedFonts').textContent = filteredFonts.length;
                 
                 // Render pagination
-                renderPagination(fonts.length, page);
+                renderPagination();
                 
                 // Save to localStorage
                 saveToLocalStorage();
@@ -840,46 +707,55 @@
         }
 
         // Function to render pagination
-        function renderPagination(totalFonts, currentPage) {
-            const totalPages = Math.ceil(totalFonts / FONTS_PER_PAGE);
+        function renderPagination() {
+            const totalPages = Math.ceil(filteredFonts.length / FONTS_PER_PAGE);
             const paginationContainer = document.getElementById('pagination');
             
+            // Clear previous pagination
+            paginationContainer.innerHTML = '';
+            
             if (totalPages <= 1) {
-                paginationContainer.innerHTML = '';
                 return;
             }
             
-            let paginationHTML = '';
-            
             // Previous button
             if (currentPage > 1) {
-                paginationHTML += `<button class="page-btn" data-page="${currentPage - 1}">${currentLanguage === 'ar' ? 'السابق' : 'Previous'}</button>`;
+                const prevBtn = document.createElement('button');
+                prevBtn.className = 'page-btn';
+                prevBtn.textContent = currentLanguage === 'ar' ? 'السابق' : 'Previous';
+                prevBtn.addEventListener('click', () => {
+                    currentPage--;
+                    renderFonts();
+                });
+                paginationContainer.appendChild(prevBtn);
             }
             
             // Page numbers
             for (let i = 1; i <= totalPages; i++) {
+                const pageBtn = document.createElement('button');
+                pageBtn.className = 'page-btn';
                 if (i === currentPage) {
-                    paginationHTML += `<button class="page-btn active" data-page="${i}">${i}</button>`;
-                } else {
-                    paginationHTML += `<button class="page-btn" data-page="${i}">${i}</button>`;
+                    pageBtn.classList.add('active');
                 }
+                pageBtn.textContent = i;
+                pageBtn.addEventListener('click', () => {
+                    currentPage = i;
+                    renderFonts();
+                });
+                paginationContainer.appendChild(pageBtn);
             }
             
             // Next button
             if (currentPage < totalPages) {
-                paginationHTML += `<button class="page-btn" data-page="${currentPage + 1}">${currentLanguage === 'ar' ? 'التالي' : 'Next'}</button>`;
-            }
-            
-            paginationContainer.innerHTML = paginationHTML;
-            
-            // Add event listeners to pagination buttons
-            paginationContainer.querySelectorAll('.page-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const page = parseInt(this.getAttribute('data-page'));
-                    currentPage = page;
-                    applyFiltersAndSearch();
+                const nextBtn = document.createElement('button');
+                nextBtn.className = 'page-btn';
+                nextBtn.textContent = currentLanguage === 'ar' ? 'التالي' : 'Next';
+                nextBtn.addEventListener('click', () => {
+                    currentPage++;
+                    renderFonts();
                 });
-            });
+                paginationContainer.appendChild(nextBtn);
+            }
         }
 
         // Function to render websites
@@ -912,24 +788,8 @@
 
         // Function to apply filters and search
         function applyFiltersAndSearch() {
-            let filteredFonts = arabicFonts;
-            
-            // Apply category filter
-            if (currentFilter !== 'all') {
-                filteredFonts = filteredFonts.filter(font => font.category === currentFilter);
-            }
-            
-            // Apply search filter
-            if (currentSearch) {
-                const searchTerm = currentSearch.toLowerCase();
-                filteredFonts = filteredFonts.filter(font => 
-                    font.name.toLowerCase().includes(searchTerm) || 
-                    font.description.toLowerCase().includes(searchTerm) ||
-                    font.example.toLowerCase().includes(searchTerm)
-                );
-            }
-            
-            renderFonts(filteredFonts, currentPage);
+            currentPage = 1; // Reset to first page
+            renderFonts();
         }
 
         // Function to switch language
@@ -952,11 +812,8 @@
                 element.setAttribute('placeholder', element.getAttribute(`data-${lang}-placeholder`));
             });
             
-            // Re-render history
-            renderPreviewHistory();
-            
             // Re-render fonts to update language-specific content
-            applyFiltersAndSearch();
+            renderFonts();
         }
 
         // Filter functionality
@@ -968,21 +825,19 @@
                 });
                 this.classList.add('active');
                 
-                // Update current filter and reset to page 1
+                // Update current filter and apply
                 currentFilter = this.getAttribute('data-filter');
-                currentPage = 1;
                 applyFiltersAndSearch();
             });
         });
 
-        // Search functionality
+        //===> Search functionality
         document.querySelector('.search-box').addEventListener('input', function() {
             currentSearch = this.value;
-            currentPage = 1;
             applyFiltersAndSearch();
         });
 
-        // Language toggle functionality
+        //===> Language toggle functionality
         document.querySelectorAll('.lang-btn').forEach(button => {
             button.addEventListener('click', function() {
                 const lang = this.getAttribute('data-lang');
@@ -990,17 +845,17 @@
             });
         });
 
-        // Preview functionality
+        //===> Preview functionality
         document.getElementById('previewBtn').addEventListener('click', () => updateFontPreviews());
         document.getElementById('clearPreviewBtn').addEventListener('click', clearPreviewText);
         
-        // Real-time preview updates
+        //===> Real-time preview updates
         let previewTimeout;
         document.getElementById('previewInput').addEventListener('input', function() {
-            // Clear previous timeout
+            //===> Clear previous timeout
             clearTimeout(previewTimeout);
             
-            // Set new timeout for real-time update (300ms delay)
+            //===> Set new timeout for real-time update (300ms delay)
             previewTimeout = setTimeout(() => {
                 if (autoUpdateEnabled && this.value.trim() !== '') {
                     updateFontPreviews();
@@ -1008,14 +863,14 @@
             }, 300);
         });
         
-        // Enter key for preview input
+        //===> Enter key for preview input
         document.getElementById('previewInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 updateFontPreviews();
             }
         });
         
-        // Example text clicks
+        //===> Example text clicks
         document.querySelectorAll('.preview-example').forEach(example => {
             example.addEventListener('click', function() {
                 const text = this.getAttribute('data-text');
@@ -1024,8 +879,77 @@
             });
         });
 
+        //===> Function to update font previews with custom text
+        function updateFontPreviews(text = null) {
+            const previewText = text || document.getElementById('previewInput').value;
+            
+            if (previewText.trim() === '') {
+                //===> Reset to default examples if empty
+                document.querySelectorAll('.font-example').forEach((example, index) => {
+                    if (filteredFonts[index]) {
+                        example.textContent = filteredFonts[index].example;
+                    }
+                });
+                return;
+            }
+            
+            //===> Update all font examples
+            document.querySelectorAll('.font-example').forEach(example => {
+                example.textContent = previewText;
+            });
+        }
+
+       //===> Function to clear preview text
+        function clearPreviewText() {
+            document.getElementById('previewInput').value = '';
+            updateFontPreviews('');
+        }
+
+        //===> Function to save data to localStorage
+        function saveToLocalStorage() {
+            const appData = {
+                currentLanguage: currentLanguage,
+                currentFilter: currentFilter,
+                currentSearch: currentSearch,
+                currentPage: currentPage,
+                previewHistory: previewHistory,
+                autoUpdateEnabled: autoUpdateEnabled,
+                lastVisit: new Date().toISOString()
+            };
+            
+            localStorage.setItem('arabicFontsApp', JSON.stringify(appData));
+        }
+
+        //===> Function to load data from localStorage
+        function loadFromLocalStorage() {
+            const savedData = localStorage.getItem('arabicFontsApp');
+            if (savedData) {
+                const appData = JSON.parse(savedData);
+                currentLanguage = appData.currentLanguage || 'ar';
+                currentFilter = appData.currentFilter || 'all';
+                currentSearch = appData.currentSearch || '';
+                currentPage = appData.currentPage || 1;
+                previewHistory = appData.previewHistory || [];
+                autoUpdateEnabled = appData.autoUpdateEnabled !== false;
+                
+                // Apply saved language
+                switchLanguage(currentLanguage);
+                
+                // Apply saved search
+                document.querySelector('.search-box').value = currentSearch;
+                
+                // Apply saved filter
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.toggle('active', btn.getAttribute('data-filter') === currentFilter);
+                });
+            }
+        }
+
         // Initial render
         document.addEventListener('DOMContentLoaded', function() {
+            // Set current year - FIXED: Moved inside DOMContentLoaded
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
             // Start loading simulation
             simulateLoading();
             
@@ -1033,7 +957,7 @@
             loadFromLocalStorage();
             
             // Render initial content
-            renderFonts(arabicFonts);
+            renderFonts();
             renderWebsites();
             document.getElementById('totalFonts').textContent = arabicFonts.length;
         });
