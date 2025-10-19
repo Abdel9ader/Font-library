@@ -50,7 +50,7 @@
     
     <div class="container">
         <!-- Enhanced Live Preview Section -->
-        <section class="live-preview-section">
+        <section class="live-preview-section" id="preview">
             <h2><i class="fas fa-edit"></i> <span data-ar="معاينة مباشرة للخطوط" data-en="Live Font Preview">معاينة مباشرة للخطوط</span></h2>
             
             <div class="preview-controls">
@@ -73,7 +73,7 @@
             </div>
             
             <div class="preview-history" id="previewHistory">
-                <!-- History items will be dynamically inserted here -->
+                <!-------- History items will be dynamically inserted here -------->
             </div>
             
             <div class="preview-examples">
@@ -126,22 +126,24 @@
             <div class="spinner"></div>
         </div>
         
-        <div class="font-grid" id="fontContainer">
-            <!-- Fonts will be dynamically inserted here -->
-        </div>
+        <section id="fonts">
+            <div class="font-grid" id="fontContainer">
+                <!-- Fonts will be dynamically inserted here -->
+            </div>
+            
+            <div class="pagination" id="pagination">
+                <!-- Pagination will be dynamically inserted here -->
+            </div>
+        </section>
         
-        <div class="pagination" id="pagination">
-            <!-- Pagination will be dynamically inserted here -->
-        </div>
-        
-        <section class="websites-section">
+        <section class="websites-section" id="websites">
             <h2><i class="fas fa-globe"></i> <span data-ar="أشهر المواقع العربية والخطوط المستخدمة" data-en="Popular Arabic Websites & Fonts Used">أشهر المواقع العربية والخطوط المستخدمة</span></h2>
             <div class="websites-grid" id="websitesContainer">
                 <!-- Websites will be dynamically inserted here -->
             </div>
         </section>
         
-        <section class="implementation">
+        <section class="implementation" id="usage">
             <h2><i class="fas fa-code"></i> <span data-ar="كيفية استخدام هذه الخطوط في موقعك" data-en="How to Use These Fonts in Your Website">كيفية استخدام هذه الخطوط في موقعك</span></h2>
             <p data-ar="لإضافة أي من هذه الخطوط إلى موقعك، اتبع هذه الخطوات:" data-en="To add any of these fonts to your website, follow these steps:">لإضافة أي من هذه الخطوط إلى موقعك، اتبع هذه الخطوات:</p>
             
@@ -197,20 +199,71 @@ h1, h2, h3 {
     </div>
     
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <h3 data-ar="معرض الخطوط العربية" data-en="Arabic Fonts Showcase">معرض الخطوط العربية</h3>
-                <p data-ar="50 خطاً عربياً شائعاً في تصميم المواقع" data-en="50 popular Arabic fonts for web design">50 خطاً عربياً شائعاً في تصميم المواقع</p>
-                <div class="developer-signature">
-                    <i class="fas fa-laptop-code"></i> <span data-ar="تم التطوير بواسطة عبدالقادر محمد" data-en="Developed by Abdelkader Mohamed">تم التطوير بواسطة عبدالقادر محمد</span>
-                </div>
+        <div class="footer-main">
+            <!-- القسم الأيمن: اسم الموقع وتعريفه -->
+<div class="footer-section footer-left">
+    <h3 data-ar="معرض الخطوط العربية" data-en="Arabic Fonts Showcase">
+        معرض الخطوط العربية
+    </h3>
+
+    <div class="website-description">
+        <p 
+            data-ar="منصة شاملة تعرض أجمل الخطوط العربية المستخدمة في تصميم المواقع. نوفر لك تجربة معاينة حية وتطبيق عملي لأكثر من 50 خطاً عربياً."
+            data-en="A comprehensive platform  showcasing the most beautiful Arabic fonts used in web design. We provide you with a live preview experience and practical implementation of over 50 Arabic fonts."
+        >
+           منصة شاملة تعرض أجمل الخطوط العربية المستخدمة في تصميم المواقع. نوفر لك تجربة معاينة حية وتطبيق عملي لأكثر من 50 خطاً عربياً.
+        </p>
+
+        <p 
+            data-ar=" مميزات المنصة معاينة مباشرة، بحث متقدم، تصنيف الخطوط، أمثلة تطبيقية، ودعم كامل للغتين العربية والإنجليزية."
+            data-en="Platform Features: Live preview, advanced search, font categorization, practical examples, and full support for both Arabic and English languages."
+        >
+            <span class="">مميزات المنصة :معاينة مباشرة، بحث متقدم، تصنيف الخطوط، أمثلة تطبيقية، ودعم كامل للغتين العربية والإنجليزية.
+        </p>
+    </div>
+</div>
+
+            
+            <!-- القسم الأوسط: السوشيال ميديا -->
+            <div class="footer-section footer-center">
+                <h3 data-ar="تابعنا على" data-en="Follow Us">تابعنا على</h3>
                 <div class="social-links">
-                    <a href="https://x.com/_F35__?t=VBYX8-j8k7wArl4tpC1A6g&s=08" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="https://github.com/Abdel9ader" class="social-link"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/abdelkader-mohamed-a00536249/?fbclid=IwY2xjawNcpUJleHRuA2FlbQIxMABicmlkETFKMDkzdkhCQXFTVjBEWktBAR4CGVfOQW90NpWy7wplU5SIu2jmSyCbY6T7bExtgxxlYHX9yCRLDKe6M8nWmQ_aem_pqMb14X5DdXMdExmK5w1iA" class="social-link"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.facebook.com/abdalkader.saadallh" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="https://x.com/_F35__?t=VBYX8-j8k7wArl4tpC1A6g&s=08" class="social-link" title="Twitter" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://github.com/Abdel9ader" class="social-link" title="GitHub" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/abdelkader-mohamed-a00536249/?fbclid=IwY2xjawNcpUJleHRuA2FlbQIxMABicmlkETFKMDkzdkhCQXFTVjBEWktBAR4CGVfOQW90NpWy7wplU5SIu2jmSyCbY6T7bExtgxxlYHX9yCRLDKe6M8nWmQ_aem_pqMb14X5DdXMdExmK5w1iA" class="social-link" title="LinkedIn" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://www.facebook.com/abdalkader.saadallh" class="social-link" title="Facebook" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
                 </div>
-                <p data-ar="جميع الحقوق محفوظة ©" data-en="All rights reserved ©">جميع الحقوق محفوظة © <span id="currentYear"></span></p>
+            </div>
+            
+            <!-- القسم الأيسر: روابط أقسام الموقع -->
+            <div class="footer-section footer-right">
+                <h3 data-ar="روابط سريعة" data-en="Quick Links">روابط سريعة</h3>
+                <div class="footer-links rtl" id="quickLinks">
+                    <a href="#" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+                    <a href="#preview" data-ar="معاينة الخطوط" data-en="Font Preview">معاينة الخطوط</a>
+                    <a href="#fonts" data-ar="جميع الخطوط" data-en="All Fonts">جميع الخطوط</a>
+                    <a href="#websites" data-ar="المواقع العربية" data-en="Arabic Websites">المواقع العربية</a>
+                    <a href="#usage" data-ar="كيفية الاستخدام" data-en="How to Use">كيفية الاستخدام</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="developer-credit-footer">
+                <span data-ar="تم التطوير بواسطة" data-en="Developed by">تم التطوير بواسطة</span> 
+                <a href="https://github.com/Abdel9ader" target="_blank" data-ar="عبدالقادر محمد" data-en="Abdelkader Mohamed">عبدالقادر محمد</a>
+            </div>
+            <div class="copyright">
+                <span data-ar="جميع الحقوق محفوظة ©" data-en="All rights reserved ©">جميع الحقوق محفوظة ©</span> 
+                <span id="currentYear"></span>
             </div>
         </div>
     </footer>
