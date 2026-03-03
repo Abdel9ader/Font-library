@@ -1,40 +1,48 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arabic Fonts Showcase - معرض الخطوط العربية</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%232c5aa0'>ع</text></svg>">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%232c5aa0'>ع</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Tajawal:wght@300;400;700&family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Lemonada:wght@400;600&family=Almarai:wght@400;700&family=Changa:wght@400;700&family=El+Messiri:wght@400;700&family=Markazi+Text:wght@400;700&family=Reem+Kufi:wght@400;700&family=Rakkas&family=Mirza:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Mada:wght@400;700&family=Lateef:wght@400;700&family=Harmattan&family=Jomhuria&family=Ruwudu&family=Noto+Naskh+Arabic:wght@400;700&family=Katibeh&family=Aref+Ruqaa+Ink&family=IBM+Plex+Sans+Arabic:wght@400;700&family=Rubik:wght@400;700&family=Vibes&family=Baloo+Bhaijaan+2:wght@400;700&family=Gulzar&family=Noto+Sans+Arabic:wght@400;700&family=Alkalami&family=Qahiri&family=Reem+Kufi+Fun&family=Zain&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Tajawal:wght@300;400;700&family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Lemonada:wght@400;600&family=Almarai:wght@400;700&family=Changa:wght@400;700&family=El+Messiri:wght@400;700&family=Markazi+Text:wght@400;700&family=Reem+Kufi:wght@400;700&family=Rakkas&family=Mirza:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Mada:wght@400;700&family=Lateef:wght@400;700&family=Harmattan&family=Jomhuria&family=Ruwudu&family=Noto+Naskh+Arabic:wght@400;700&family=Katibeh&family=Aref+Ruqaa+Ink&family=IBM+Plex+Sans+Arabic:wght@400;700&family=Rubik:wght@400;700&family=Vibes&family=Baloo+Bhaijaan+2:wght@400;700&family=Gulzar&family=Noto+Sans+Arabic:wght@400;700&family=Alkalami&family=Qahiri&family=Reem+Kufi+Fun&family=Zain&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Enhanced Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
         <div class="loading-content">
             <div class="loading-logo">ع</div>
-            <div class="loading-text" data-ar="معرض الخطوط العربية" data-en="Arabic Fonts Showcase">معرض الخطوط العربية</div>
-            <div class="loading-subtext" data-ar="جاري تحميل أجمل الخطوط العربية..." data-en="Loading the most beautiful Arabic fonts...">جاري تحميل أجمل الخطوط العربية...</div>
-            
+            <div class="loading-text" data-ar="معرض الخطوط العربية" data-en="Arabic Fonts Showcase">معرض الخطوط العربية
+            </div>
+            <div class="loading-subtext" data-ar="جاري تحميل أجمل الخطوط العربية..."
+                data-en="Loading the most beautiful Arabic fonts...">جاري تحميل أجمل الخطوط العربية...</div>
+
             <div class="progress-container">
                 <div class="progress-bar" id="progressBar"></div>
             </div>
             <div class="loading-percentage" id="loadingPercentage">0%</div>
-            
+
             <div class="loading-dots">
                 <div class="dot"></div>
                 <div class="dot"></div>
                 <div class="dot"></div>
             </div>
         </div>
-        
-        <div class="loading-footer" data-ar="تم التطوير بواسطة عبدالقادر محمد" data-en="Developed by Abdelkader Mohamed">تم التطوير بواسطة عبدالقادر محمد</div>
+
+        <div class="loading-footer" data-ar="تم التطوير بواسطة عبدالقادر محمد"
+            data-en="Developed by Abdelkader Mohamed">تم التطوير بواسطة عبدالقادر محمد</div>
     </div>
 
-    <header>
+    <header id="mainHeader">
         <div class="container">
             <div class="language-toggle">
                 <button class="lang-btn active" data-lang="ar">العربية</button>
@@ -42,23 +50,30 @@
             </div>
             <div class="header-content">
                 <h1 data-ar="معرض الخطوط العربية" data-en="Arabic Fonts Showcase">معرض الخطوط العربية</h1>
-                <p class="subtitle" data-ar="50 خطاً عربياً شائعاً في تصميم المواقع" data-en="50 popular Arabic fonts for web design">50 خطاً عربياً شائعاً في تصميم المواقع</p>
-                <div class="developer-credit" data-ar="تم التطوير بواسطة عبدالقادر محمد" data-en="Developed by Abdelkader Mohamed">تم التطوير بواسطة عبدالقادر محمد</div>
+                <p class="subtitle" data-ar="50 خطاً عربياً شائعاً في تصميم المواقع"
+                    data-en="50 popular Arabic fonts for web design">50 خطاً عربياً شائعاً في تصميم المواقع</p>
+                <div class="developer-credit" data-ar="تم التطوير بواسطة عبدالقادر محمد"
+                    data-en="Developed by Abdelkader Mohamed">تم التطوير بواسطة عبدالقادر محمد</div>
             </div>
         </div>
     </header>
-    
+
     <div class="container">
         <!-- Enhanced Live Preview Section -->
-        <section class="live-preview-section" id="preview">
-            <h2><i class="fas fa-edit"></i> <span data-ar="معاينة مباشرة للخطوط" data-en="Live Font Preview">معاينة مباشرة للخطوط</span></h2>
-            
+        <section class="live-preview-section fade-in-up" id="preview">
+            <h2><i class="fas fa-edit"></i> <span data-ar="معاينة مباشرة للخطوط" data-en="Live Font Preview">معاينة
+                    مباشرة للخطوط</span></h2>
+
             <div class="preview-controls">
                 <div class="preview-input-container">
-                    <input type="text" class="preview-input" id="previewInput" placeholder="اكتب النص الذي تريد معاينته..." data-ar-placeholder="اكتب النص الذي تريد معاينته..." data-en-placeholder="Type text to preview...">
+                    <input type="text" class="preview-input" id="previewInput"
+                        placeholder="اكتب النص الذي تريد معاينته..."
+                        data-ar-placeholder="اكتب النص الذي تريد معاينته..."
+                        data-en-placeholder="Type text to preview...">
                 </div>
                 <div class="preview-actions">
-                    <button class="preview-btn" id="previewBtn" data-ar="طبق على جميع الخطوط" data-en="Apply to All Fonts">
+                    <button class="preview-btn" id="previewBtn" data-ar="طبق على جميع الخطوط"
+                        data-en="Apply to All Fonts">
                         <i class="fas fa-paint-brush"></i> <span>طبق على جميع الخطوط</span>
                     </button>
                     <button class="preview-btn secondary" id="clearPreviewBtn" data-ar="مسح النص" data-en="Clear Text">
@@ -66,28 +81,33 @@
                     </button>
                 </div>
             </div>
-            
+
             <div class="preview-info">
                 <i class="fas fa-info-circle"></i>
-                <span data-ar="يمكنك كتابة أي نص وسيتم تحديث جميع الخطوط تلقائياً. يمكنك أيضًا الضغط على Enter لتطبيق النص." data-en="Type any text and all fonts will update automatically. You can also press Enter to apply the text.">يمكنك كتابة أي نص وسيتم تحديث جميع الخطوط تلقائياً. يمكنك أيضًا الضغط على Enter لتطبيق النص.</span>
+                <span
+                    data-ar="يمكنك كتابة أي نص وسيتم تحديث جميع الخطوط تلقائياً. يمكنك أيضًا الضغط على Enter لتطبيق النص."
+                    data-en="Type any text and all fonts will update automatically. You can also press Enter to apply the text.">يمكنك
+                    كتابة أي نص وسيتم تحديث جميع الخطوط تلقائياً. يمكنك أيضًا الضغط على Enter لتطبيق النص.</span>
             </div>
-            
+
             <div class="preview-history" id="previewHistory">
                 <!-------- History items will be dynamically inserted here -------->
             </div>
-            
+
             <div class="preview-examples">
                 <div class="preview-example" data-text="مرحباً بكم في موقعنا">مرحباً بكم في موقعنا</div>
-                <div class="preview-example" data-text="تجربة رائعة مع الخطوط العربية">تجربة رائعة مع الخطوط العربية</div>
+                <div class="preview-example" data-text="تجربة رائعة مع الخطوط العربية">تجربة رائعة مع الخطوط العربية
+                </div>
                 <div class="preview-example" data-text="تصميم ويب إبداعي">تصميم ويب إبداعي</div>
                 <div class="preview-example" data-text="جمال الخط العربي">جمال الخط العربي</div>
                 <div class="preview-example" data-text="موقع إلكتروني متكامل">موقع إلكتروني متكامل</div>
                 <div class="preview-example" data-text="نصوص عربية جميلة">نصوص عربية جميلة</div>
             </div>
         </section>
-        
-        <section class="controls">
-            <input type="text" class="search-box" placeholder="ابحث عن خط معين..." data-ar-placeholder="ابحث عن خط معين..." data-en-placeholder="Search for a font...">
+
+        <section class="controls fade-in-up">
+            <input type="text" class="search-box" placeholder="ابحث عن خط معين..."
+                data-ar-placeholder="ابحث عن خط معين..." data-en-placeholder="Search for a font...">
             <div class="filter-buttons">
                 <button class="filter-btn active" data-filter="all">
                     <i class="fas fa-layer-group"></i> <span data-ar="الكل" data-en="All">الكل</span>
@@ -106,8 +126,8 @@
                 </button>
             </div>
         </section>
-        
-        <section class="stats">
+
+        <section class="stats fade-in-up">
             <div class="stat-card">
                 <div class="stat-number" id="totalFonts">50</div>
                 <div class="stat-label" data-ar="خط عربي" data-en="Arabic Fonts">خط عربي</div>
@@ -121,129 +141,139 @@
                 <div class="stat-label" data-ar="مجاني للاستخدام" data-en="Free to Use">مجاني للاستخدام</div>
             </div>
         </section>
-        
+
         <div class="loading hidden" id="loadingIndicator">
             <div class="spinner"></div>
         </div>
-        
+
         <section id="fonts">
             <div class="font-grid" id="fontContainer">
                 <!-- Fonts will be dynamically inserted here -->
             </div>
-            
+
             <div class="pagination" id="pagination">
                 <!-- Pagination will be dynamically inserted here -->
             </div>
         </section>
-        
-        <section class="websites-section" id="websites">
-            <h2><i class="fas fa-globe"></i> <span data-ar="أشهر المواقع العربية والخطوط المستخدمة" data-en="Popular Arabic Websites & Fonts Used">أشهر المواقع العربية والخطوط المستخدمة</span></h2>
+
+        <section class="websites-section fade-in-up" id="websites">
+            <h2><i class="fas fa-globe"></i> <span data-ar="أشهر المواقع العربية والخطوط المستخدمة"
+                    data-en="Popular Arabic Websites & Fonts Used">أشهر المواقع العربية والخطوط المستخدمة</span></h2>
             <div class="websites-grid" id="websitesContainer">
                 <!-- Websites will be dynamically inserted here -->
             </div>
         </section>
-        
-        <section class="implementation" id="usage">
-            <h2><i class="fas fa-code"></i> <span data-ar="كيفية استخدام هذه الخطوط في موقعك" data-en="How to Use These Fonts in Your Website">كيفية استخدام هذه الخطوط في موقعك</span></h2>
-            <p data-ar="لإضافة أي من هذه الخطوط إلى موقعك، اتبع هذه الخطوات:" data-en="To add any of these fonts to your website, follow these steps:">لإضافة أي من هذه الخطوط إلى موقعك، اتبع هذه الخطوات:</p>
-            
-            <h3 data-ar="1. أضف رابط الخط في قسم head" data-en="1. Add the font link in the head section">1. أضف رابط الخط في قسم head</h3>
+
+        <section class="implementation fade-in-up" id="usage">
+            <h2><i class="fas fa-code"></i> <span data-ar="كيفية استخدام هذه الخطوط في موقعك"
+                    data-en="How to Use These Fonts in Your Website">كيفية استخدام هذه الخطوط في موقعك</span></h2>
+            <p data-ar="لإضافة أي من هذه الخطوط إلى موقعك، اتبع هذه الخطوات:"
+                data-en="To add any of these fonts to your website, follow these steps:">لإضافة أي من هذه الخطوط إلى
+                موقعك، اتبع هذه الخطوات:</p>
+
+            <h3 data-ar="1. أضف رابط الخط في قسم head" data-en="1. Add the font link in the head section">1. أضف رابط
+                الخط في قسم head</h3>
             <div class="code-block">
-&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
-&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
-&lt;link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet"&gt;
+                &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+                &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+                &lt;link
+                href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&family=Cairo:wght@400;700&display=swap"
+                rel="stylesheet"&gt;
             </div>
-            
+
             <h3 data-ar="2. طبق الخط في CSS" data-en="2. Apply the font in CSS">2. طبق الخط في CSS</h3>
             <div class="code-block">
-body {
-    font-family: 'Tajawal', sans-serif;
-    direction: rtl;
-    line-height: 1.8;
-}
+                body {
+                font-family: 'Tajawal', sans-serif;
+                direction: rtl;
+                line-height: 1.8;
+                }
 
-h1, h2, h3 {
-    font-family: 'Cairo', sans-serif;
-}
+                h1, h2, h3 {
+                font-family: 'Cairo', sans-serif;
+                }
             </div>
-            
+
             <h3 data-ar="3. مثال كامل لصفحة HTML" data-en="3. Complete HTML page example">3. مثال كامل لصفحة HTML</h3>
             <div class="code-block">
-&lt;!DOCTYPE html&gt;
-&lt;html lang="ar" dir="rtl"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;موقعي&lt;/title&gt;
-    &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
-    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
-    &lt;link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet"&gt;
-    &lt;style&gt;
-        body {
-            font-family: 'Tajawal', sans-serif;
-            direction: rtl;
-            line-height: 1.8;
-        }
-        h1, h2, h3 {
-            font-family: 'Cairo', sans-serif;
-        }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;مرحباً بكم في موقعي&lt;/h1&gt;
-    &lt;p&gt;هذا مثال على استخدام الخطوط العربية الجميلة في موقع الويب.&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+                &lt;!DOCTYPE html&gt;
+                &lt;html lang="ar" dir="rtl"&gt;
+                &lt;head&gt;
+                &lt;meta charset="UTF-8"&gt;
+                &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                &lt;title&gt;موقعي&lt;/title&gt;
+                &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+                &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+                &lt;link
+                href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&family=Cairo:wght@400;700&display=swap"
+                rel="stylesheet"&gt;
+                &lt;style&gt;
+                body {
+                font-family: 'Tajawal', sans-serif;
+                direction: rtl;
+                line-height: 1.8;
+                }
+                h1, h2, h3 {
+                font-family: 'Cairo', sans-serif;
+                }
+                &lt;/style&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                &lt;h1&gt;مرحباً بكم في موقعي&lt;/h1&gt;
+                &lt;p&gt;هذا مثال على استخدام الخطوط العربية الجميلة في موقع الويب.&lt;/p&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;
             </div>
         </section>
     </div>
-    
+
     <footer>
         <div class="footer-main">
-            <!-- القسم الأيمن: اسم الموقع وتعريفه -->
-<div class="footer-section footer-left">
-    <h3 data-ar="معرض الخطوط العربية" data-en="Arabic Fonts Showcase">
-        معرض الخطوط العربية
-    </h3>
 
-    <div class="website-description">
-        <p 
-            data-ar="منصة شاملة تعرض أجمل الخطوط العربية المستخدمة في تصميم المواقع. نوفر لك تجربة معاينة حية وتطبيق عملي لأكثر من 50 خطاً عربياً."
-            data-en="A comprehensive platform  showcasing the most beautiful Arabic fonts used in web design. We provide you with a live preview experience and practical implementation of over 50 Arabic fonts."
-        >
-           منصة شاملة تعرض أجمل الخطوط العربية المستخدمة في تصميم المواقع. نوفر لك تجربة معاينة حية وتطبيق عملي لأكثر من 50 خطاً عربياً.
-        </p>
+            <div class="footer-section footer-left">
+                <h3 data-ar="معرض الخطوط العربية" data-en="Arabic Fonts Showcase">
+                    معرض الخطوط العربية
+                </h3>
 
-        <p 
-            data-ar=" مميزات المنصة معاينة مباشرة، بحث متقدم، تصنيف الخطوط، أمثلة تطبيقية، ودعم كامل للغتين العربية والإنجليزية."
-            data-en="Platform Features: Live preview, advanced search, font categorization, practical examples, and full support for both Arabic and English languages."
-        >
-            <span class="">مميزات المنصة :معاينة مباشرة، بحث متقدم، تصنيف الخطوط، أمثلة تطبيقية، ودعم كامل للغتين العربية والإنجليزية.
-        </p>
-    </div>
-</div>
+                <div class="website-description">
+                    <p data-ar="منصة شاملة تعرض أجمل الخطوط العربية المستخدمة في تصميم المواقع. نوفر لك تجربة معاينة حية وتطبيق عملي لأكثر من 50 خطاً عربياً."
+                        data-en="A comprehensive platform  showcasing the most beautiful Arabic fonts used in web design. We provide you with a live preview experience and practical implementation of over 50 Arabic fonts.">
+                        منصة شاملة تعرض أجمل الخطوط العربية المستخدمة في تصميم المواقع. نوفر لك تجربة معاينة حية وتطبيق
+                        عملي لأكثر من 50 خطاً عربياً.
+                    </p>
 
-            
-            <!-- القسم الأوسط: السوشيال ميديا -->
+                    <p data-ar=" مميزات المنصة معاينة مباشرة، بحث متقدم، تصنيف الخطوط، أمثلة تطبيقية، ودعم كامل للغتين العربية والإنجليزية."
+                        data-en="Platform Features: Live preview, advanced search, font categorization, practical examples, and full support for both Arabic and English languages.">
+                        <span class="">مميزات المنصة :معاينة مباشرة، بحث متقدم، تصنيف الخطوط، أمثلة تطبيقية، ودعم كامل
+                            للغتين العربية والإنجليزية.
+                    </p>
+                </div>
+            </div>
+
+
+
             <div class="footer-section footer-center">
                 <h3 data-ar="تابعنا على" data-en="Follow Us">تابعنا على</h3>
                 <div class="social-links">
-                    <a href="https://x.com/_F35__?t=VBYX8-j8k7wArl4tpC1A6g&s=08" class="social-link" title="Twitter" target="_blank">
+                    <a href="https://x.com/_F35__?t=VBYX8-j8k7wArl4tpC1A6g&s=08" class="social-link" title="Twitter"
+                        target="_blank">
                         <i class="fab fa-twitter"></i>
                     </a>
                     <a href="https://github.com/Abdel9ader" class="social-link" title="GitHub" target="_blank">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/abdelkader-mohamed-a00536249/?fbclid=IwY2xjawNcpUJleHRuA2FlbQIxMABicmlkETFKMDkzdkhCQXFTVjBEWktBAR4CGVfOQW90NpWy7wplU5SIu2jmSyCbY6T7bExtgxxlYHX9yCRLDKe6M8nWmQ_aem_pqMb14X5DdXMdExmK5w1iA" class="social-link" title="LinkedIn" target="_blank">
+                    <a href="https://www.linkedin.com/in/abdelkader-mohamed-a00536249/?fbclid=IwY2xjawNcpUJleHRuA2FlbQIxMABicmlkETFKMDkzdkhCQXFTVjBEWktBAR4CGVfOQW90NpWy7wplU5SIu2jmSyCbY6T7bExtgxxlYHX9yCRLDKe6M8nWmQ_aem_pqMb14X5DdXMdExmK5w1iA"
+                        class="social-link" title="LinkedIn" target="_blank">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="https://www.facebook.com/abdalkader.saadallh" class="social-link" title="Facebook" target="_blank">
+                    <a href="https://www.facebook.com/abdalkader.saadallh" class="social-link" title="Facebook"
+                        target="_blank">
                         <i class="fab fa-facebook"></i>
                     </a>
                 </div>
             </div>
+
             
-            <!-- القسم الأيسر: روابط أقسام الموقع -->
             <div class="footer-section footer-right">
                 <h3 data-ar="روابط سريعة" data-en="Quick Links">روابط سريعة</h3>
                 <div class="footer-links rtl" id="quickLinks">
@@ -255,19 +285,29 @@ h1, h2, h3 {
                 </div>
             </div>
         </div>
-        
+
         <div class="footer-bottom">
             <div class="developer-credit-footer">
-                <span data-ar="تم التطوير بواسطة" data-en="Developed by">تم التطوير بواسطة</span> 
-                <a href="https://github.com/Abdel9ader" target="_blank" data-ar="عبدالقادر محمد" data-en="Abdelkader Mohamed">عبدالقادر محمد</a>
+                <span data-ar="تم التطوير بواسطة" data-en="Developed by">تم التطوير بواسطة</span>
+                <a href="https://github.com/Abdel9ader" target="_blank" data-ar="عبدالقادر محمد"
+                    data-en="Abdelkader Mohamed">عبدالقادر محمد</a>
             </div>
             <div class="copyright">
-                <span data-ar="جميع الحقوق محفوظة ©" data-en="All rights reserved ©">جميع الحقوق محفوظة ©</span> 
+                <span data-ar="جميع الحقوق محفوظة ©" data-en="All rights reserved ©">جميع الحقوق محفوظة ©</span>
                 <span id="currentYear"></span>
             </div>
         </div>
     </footer>
 
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top-btn" id="scrollTopBtn" title="Back to Top" aria-label="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <script src="script.js"></script>
 </body>
+
 </html>
